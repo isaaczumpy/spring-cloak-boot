@@ -6,10 +6,10 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "keycloak.server")
 public class KeycloakServerProperties {
 
-    @Value("${keycloak.server.context-path}")
+    @Value("${keycloak.server.contextPath}")
     String contextPath;
 
-    @Value("${keycloak.server.realm-import-file}")
+    @Value("${keycloak.server.realmImportFile}")
     String realmImportFile;
 
     AdminUser adminUser = new AdminUser();
