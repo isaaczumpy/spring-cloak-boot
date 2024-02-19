@@ -23,9 +23,7 @@ repositories {
 
 dependencies { 
     // spring boot =====================================================================================================
-    implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '3.2.2'
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '3.2.2'
 
