@@ -1,5 +1,6 @@
 package com.eoisaac.auth.provider;
 
+import lombok.extern.slf4j.Slf4j;
 import org.keycloak.component.ComponentModel;
 import org.keycloak.component.ComponentValidationException;
 import org.keycloak.models.KeycloakSession;
@@ -7,17 +8,18 @@ import org.keycloak.models.RealmModel;
 import org.keycloak.provider.ProviderConfigProperty;
 import org.keycloak.provider.ProviderConfigurationBuilder;
 import org.keycloak.storage.UserStorageProviderFactory;
-import com.eoisaac.auth.provider.UserProvider;
 import org.keycloak.utils.StringUtil;
 
 import java.util.List;
 
+@Slf4j
 public class UserProviderFactory implements UserStorageProviderFactory<UserProvider> {
 
     public static final String PROVIDER_ID = "user-provider";
 
     @Override
     public UserProvider create(KeycloakSession keycloakSession, ComponentModel componentModel) {
+        log.info("\n\nCreating UserProvider\n\n");
         return new UserProvider(keycloakSession, componentModel);
     }
 
@@ -56,6 +58,7 @@ public class UserProviderFactory implements UserStorageProviderFactory<UserProvi
 
     @Override
     public void validateConfiguration(KeycloakSession session, RealmModel realm, ComponentModel config) throws ComponentValidationException {
+        log.info("\n\nValidating UserProvider configuration\n\n");
         if (StringUtil.isBlank(config.get(Constants.BASE_URL))
                 || StringUtil.isBlank(config.get(Constants.AUTH_USERNAME))
                 || StringUtil.isBlank(config.get(Constants.AUTH_PASSWORD))) {

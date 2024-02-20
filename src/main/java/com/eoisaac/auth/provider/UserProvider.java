@@ -1,5 +1,6 @@
 package com.eoisaac.auth.provider;
 
+import lombok.extern.slf4j.Slf4j;
 import org.keycloak.component.ComponentModel;
 import org.keycloak.credential.CredentialInput;
 import org.keycloak.credential.CredentialInputUpdater;
@@ -14,6 +15,7 @@ import org.keycloak.storage.user.*;
 import java.util.Map;
 import java.util.stream.Stream;
 
+@Slf4j
 public class UserProvider implements UserStorageProvider,
         UserLookupProvider, UserQueryProvider,
         CredentialInputUpdater, CredentialInputValidator,
@@ -42,6 +44,7 @@ public class UserProvider implements UserStorageProvider,
 
     @Override
     public boolean isValid(RealmModel realmModel, UserModel userModel, CredentialInput credentialInput) {
+        log.info("Validating credential for user: {}", userModel.getUsername());
         return false;
     }
 
@@ -62,46 +65,55 @@ public class UserProvider implements UserStorageProvider,
 
     @Override
     public void close() {
-
+        log.info("Closing user provider");
     }
+
 
     @Override
     public UserModel getUserById(RealmModel realmModel, String s) {
+        log.info("Getting user by id: {}", s);
         return null;
     }
 
     @Override
     public UserModel getUserByUsername(RealmModel realmModel, String s) {
+        log.info("Getting user by username: {}", s);
         return null;
     }
 
     @Override
     public UserModel getUserByEmail(RealmModel realmModel, String s) {
+        log.info("Getting user by email: {}", s);
         return null;
     }
 
     @Override
     public Stream<UserModel> searchForUserStream(RealmModel realmModel, Map<String, String> map, Integer integer, Integer integer1) {
+        log.info("Searching for user: {}", map);
         return null;
     }
 
     @Override
     public Stream<UserModel> getGroupMembersStream(RealmModel realmModel, GroupModel groupModel, Integer integer, Integer integer1) {
+        log.info("Getting group members for group: {}", groupModel.getName());
         return null;
     }
 
     @Override
     public Stream<UserModel> searchForUserByUserAttributeStream(RealmModel realmModel, String s, String s1) {
+        log.info("Searching for user by user attribute: {}={}", s, s1);
         return null;
     }
 
     @Override
     public UserModel addUser(RealmModel realmModel, String s) {
+        log.info("Adding user: {}", s);
         return null;
     }
 
     @Override
     public boolean removeUser(RealmModel realmModel, UserModel userModel) {
+        log.info("Removing user: {}", userModel.getUsername());
         return false;
     }
 }
