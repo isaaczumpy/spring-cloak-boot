@@ -107,7 +107,7 @@ public class UserProvider implements UserStorageProvider,
 
     @Override
     public UserModel addUser(RealmModel realmModel, String s) {
-        log.info("Adding user: {}", s);
+        log.info("Adding user: {}", realmModel.toString());
         return null;
     }
 
